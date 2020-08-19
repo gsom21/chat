@@ -1,0 +1,11 @@
+GET http://localhost:9000/api/token
+Accept: application/json
+Authorization: Basic YWRtaW46bmhqa211aGp2
+
+###
+#8bd199e6-89fe-4085-a9e5-5be87816bd0d
+GET http://localhost:9000/resource/api/user
+Accept: application/json
+#X-Auth-Token: b5d818b9-ec7d-44fe-9cc8-bdb3d561e21e
+#Authorization: Basic YWRtaW46bmhqa211aGp2
+###

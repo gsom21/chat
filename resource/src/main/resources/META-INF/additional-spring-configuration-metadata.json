@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "name": "ui.host",
+      "type": "java.lang.String",
+      "description": "Ui host."
+  }
+] }

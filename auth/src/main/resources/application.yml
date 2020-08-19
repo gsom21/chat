@@ -1,0 +1,55 @@
+spring:
+  session:
+    store-type: redis
+    redis:
+      flush-mode: on-save
+      namespace: spring:session
+
+  redis:
+    host: localhost
+    port: 6379
+
+  jpa:
+#    hibernate:
+#      ddl-auto: create
+#    properties:
+#      hibernate:
+#        jdbc:
+#          lob:
+#            non_contextual_creation: true
+
+    generate-ddl: true
+
+  datasource:
+    initialization-mode: always
+    url: jdbc:postgresql://localhost:5432/auth
+    username: postgres
+    password: nhjkmuhjv
+    platform: postgresql
+
+  h2:
+    console:
+      enabled: true
+
+  security:
+    oauth2:
+      client:
+        registration:
+          github:
+            clientId: 4e5635095b4f8b97d233
+            clientSecret: 6584b7843c98fcd30c77bdb6ca1db46379061dc0
+server:
+  port: 9000
+
+zuul:
+  routes:
+    resource:
+      path: /resource/**
+      url: http://localhost:9001
+      sensitive-headers: Cookie,Set-Cookie,Authorization
+
+
+
+#logging:
+#  level:
+#    root: DEBUG

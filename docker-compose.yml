@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+  auth.db:
+    image: postgres:11.4
+    volumes:
+      - ./volumes/auth.db:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: nhjkmuhjv
+      POSTGRES_DB: auth
+    ports:
+      - 5432:5432
+
+  resource.db:
+    image: postgres:11.4
+    volumes:
+      - ./volumes/resource.db:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: nhjkmuhjv
+      POSTGRES_DB: resource
+    ports:
+      - 5433:5432
+
+  cache:
+    image: redis
+    ports:
+    - 6379:6379

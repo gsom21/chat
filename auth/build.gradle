@@ -1,0 +1,62 @@
+plugins {
+    id 'org.springframework.boot' version '2.2.0.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+    id 'java'
+}
+
+group = 'com.gsom'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    set('springCloudVersion', "Hoxton.SR6")
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    }
+}
+
+
+dependencies {
+    compile group: 'org.postgresql', name: 'postgresql', version: '9.4-1206-jdbc42'
+    compile("org.springframework.boot:spring-boot-starter-data-rest")
+    compile("org.springframework.boot:spring-boot-starter-data-jpa")
+
+    //security
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.security:spring-security-test'
+    compile "org.springframework.boot:spring-boot-starter-oauth2-client"
+
+    compile group: 'org.springframework.session', name: 'spring-session-data-redis', version: '2.2.2.RELEASE'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-redis', version: '2.2.6.RELEASE'
+
+
+    //-------
+
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+
+    implementation("com.google.guava:guava:28.2-jre")
+    compileOnly 'org.projectlombok:lombok:1.18.12'
+    annotationProcessor 'org.projectlombok:lombok:1.18.12'
+
+    testCompileOnly 'org.projectlombok:lombok:1.18.12'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.12'
+
+    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-zuul'
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+}
+
+test {
+    useJUnitPlatform()
+}

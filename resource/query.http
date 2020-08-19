@@ -1,0 +1,10 @@
+GET http://localhost:8080/api/user
+Accept: application/json
+Authorization: Basic YWRtaW46bmhqa211aGp2
+
+###
+
+POST http://localhost:8080/api/logout
+Accept: application/json
+
+###
